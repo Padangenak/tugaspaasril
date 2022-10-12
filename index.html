@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+	<table class="border border-collapse border-gray-700">
+		<thead>
+			<tr>
+				<th class="border border-gray-700">No</th>
+				<th class="border border-gray-700">Nama</th>
+				<th class="border border-gray-700">Kehadiran</th>
+				<th class="border border-gray-700">bobot Kehadiran</th>
+				<th class="border border-gray-700">UAS</th>
+				<th class="border border-gray-700">bobot uas</th>
+				<th class="border border-gray-700">UTS</th>
+				<th class="border border-gray-700">bobot uts</th>
+				<th class="border border-gray-700">TUGAS</th>
+				<th class="border border-gray-700">bobot tugas</th>
+				<th class="border border-gray-700">PROJECT</th>
+				<th class="border border-gray-700">bobot project</th>
+				<th class="border border-gray-700">Total</th>
+				<th class="border border-gray-700">Grade</th>
+			</tr>
+		</thead>
+		<tbody id="trId">
+		</tbody>
+	</table>
+	<button onclick="add()">Tambah</button>
+	<script type="text/javascript">
+		const trId = document.getElementById("trId");
+		let trSelect = trId.querySelectorAll('tr');
+		let count = 0;
+
+		function add(){
+			$('#trId').append(`<tr>
+				<td class="border border-gray-700">${++count}</td>
+				<td class="border border-gray-700">
+				<input class="w-52" type="text">
+				</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="16" min="0" id="kehadiran${count}" onchange="asddsa('kehadiran', 'kehadiran${count}')">/16
+				</td>
+				<td class="border border-gray-700" id="bobotkehadiran${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="uas${count}" onchange="asddsa('uas', 'uas${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotuas${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="uts${count}" onchange="asddsa('uts', 'uts${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotuts${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="tugas${count}" onchange="asddsa('tugas', 'tugas${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobottugas${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="project${count}" onchange="asddsa('project', 'project${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotproject${count}">0</td>
+				<td class="border border-gray-700" id="total${count}"></td>
+				<td class="border border-gray-700" id="grade${count}"></td>
+				</tr>`);
+		}
+	</script>
+	<script type="text/javascript">
+		function asddsa(category, id){
+			let idTag = document.getElementById(id);
+			switch(category){
+				case "kehadiran":
+				let vallkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(3) input').value;
+				let bobotkehadiran = (vallkehadiran*100/16)/5;
+				let botkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML = bobotkehadiran;
+			// console.log(botkehadiran);
+				let totalgradekehadiran = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+				let totalkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradekehadiran;
+				let gradekehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+				if (totalgradekehadiran>=80) {
+					gradekehadiran.innerHTML = "A";
+				}else if(totalgradekehadiran>=70){
+					gradekehadiran.innerHTML = "B";
+				}else if(totalgradekehadiran>=60){
+					gradekehadiran.innerHTML = "C";
+				}else if(totalgradekehadiran>=50){
+					gradekehadiran.innerHTML = "D";
+				}else if(totalgradekehadiran<=40){
+					gradekehadiran.innerHTML = "E";
+				}
+				// console.log(totalgrade);
+				break;
+				case "uas":
+				let valluas = idTag.parentElement.parentElement.querySelector('td:nth-child(5) input').value;
+				let bobotuas = valluas/5;
+				let botuas = idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML = bobotuas;
+				let totalgradeuas = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+				let totaluas = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradeuas;
+				let gradeuas = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+				if (totalgradeuas>=80) {
+					gradeuas.innerHTML = "A";
+				}else if(totalgradeuas>=70){
+					gradeuas.innerHTML = "B";
+				}else if(totalgradeuas>=60){
+					gradeuas.innerHTML = "C";
+				}else if(totalgradeuas>=50){
+					gradeuas.innerHTML = "D";
+				}else if(totalgradeuas<=40){
+					gradeuas.innerHTML = "E";
+				}
+				break;
+				case "uts":
+				let valluts = idTag.parentElement.parentElement.querySelector('td:nth-child(7) input').value;
+				let bobotuts = valluts/5;
+				let botuts = idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML = bobotuts;
+				let totalgradeuts = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+				let totaluts = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradeuts;
+				let gradeuts = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+				if (totalgradeuts>=80) {
+					gradeuts.innerHTML = "A";
+				}else if(totalgradeuts>=70){
+					gradeuts.innerHTML = "B";
+				}else if(totalgradeuts>=60){
+					gradeuts.innerHTML = "C";
+				}else if(totalgradeuts>=50){
+					gradeuts.innerHTML = "D";
+				}else if(totalgradeuts<=40){
+					gradeuts.innerHTML = "E";
+				}
+				break;
+				case "tugas":
+				let valltugas = idTag.parentElement.parentElement.querySelector('td:nth-child(9) input').value;
+				let bobottugas = valltugas/5;
+				let bottugas = idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML = bobottugas;
+				let totalgradetugas = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+				let totaltugas = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradetugas;
+				let gradetugas = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+				if (totalgradetugas>=80) {
+					gradetugas.innerHTML = "A";
+				}else if(totalgradetugas>=70){
+					gradetugas.innerHTML = "B";
+				}else if(totalgradetugas>=60){
+					gradetugas.innerHTML = "C";
+				}else if(totalgradetugas>=50){
+					gradetugas.innerHTML = "D";
+				}else if(totalgradetugas<=40){
+					gradetugas.innerHTML = "E";
+				}
+				break;
+				case "project":
+				let vallproject = idTag.parentElement.parentElement.querySelector('td:nth-child(11) input').value;
+				// console.log(vallproject);
+				let bobotproject = vallproject/5;
+				let botproject = idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML = bobotproject;
+				let totalgradeproject = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+				let totalproject = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradeproject;
+				let gradeproject = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+				if (totalgradeproject>=80) {
+					gradeproject.innerHTML = "A";
+				}else if(totalgradeproject>=70){
+					gradeproject.innerHTML = "B";
+				}else if(totalgradeproject>=60){
+					gradeproject.innerHTML = "C";
+				}else if(totalgradeproject>=50){
+					gradeproject.innerHTML = "D";
+				}else if(totalgradeproject<=40){
+					gradeproject.innerHTML = "E";
+				}
+				break;
+			}
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</body>
+</html>
