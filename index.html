@@ -37,7 +37,7 @@
 			switch(category){
 				case "kehadiran":
 				let vallkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(3) input').value;
-				let bobotkehadiran = (vallkehadiran*100/16)/5;
+				let bobotkehadiran = vallkehadiran/5;
 				let botkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML = bobotkehadiran;
 			// console.log(botkehadiran);
 			let totalgradekehadiran = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
@@ -140,38 +140,73 @@
 		const trId = document.getElementById("trId");
 		let trSelect = trId.querySelectorAll('tr');
 		let count = 0;
-
+		function rand(){
+			return Math.random() * (100 - 0) + 0;
+		}
 		function add(){
-			let rand100 = Math.random() * (100 - 0) + 0;
+			// let rand100 = rand();
 			$('#trId').append(`<tr>
 				<td class="border border-gray-700">${++count}</td>
 				<td class="border border-gray-700">
-				<input class="w-52" type="text">
+				<input class="w-52" type="text" value="orang ${count}">
 				</td>
 				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="kehadiran${count}" value="${rand100}" onkeyup="asddsa('kehadiran', 'kehadiran${count}')" >
+				<input class="w-12" type="number" max="100" min="0" id="kehadiran${count}" value="${rand()}" onchange="asddsa('kehadiran', 'kehadiran${count}')" >
 				</td>
 				<td class="border border-gray-700" id="bobotkehadiran${count}">0</td>
 				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="uas${count}" onchange="asddsa('uas', 'uas${count}')">
+				<input class="w-12" type="number" max="100" min="0" id="uas${count}" value="${rand()}" onchange="asddsa('uas', 'uas${count}')">
 				</td>
 				<td class="border border-gray-700" id="bobotuas${count}">0</td>
 				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="uts${count}" onchange="asddsa('uts', 'uts${count}')">
+				<input class="w-12" type="number" max="100" min="0" id="uts${count}" value="${rand()}" onchange="asddsa('uts', 'uts${count}')">
 				</td>
 				<td class="border border-gray-700" id="bobotuts${count}">0</td>
 				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="tugas${count}" onchange="asddsa('tugas', 'tugas${count}')">
+				<input class="w-12" type="number" max="100" min="0" id="tugas${count}" value="${rand()}" onchange="asddsa('tugas', 'tugas${count}')">
 				</td>
 				<td class="border border-gray-700" id="bobottugas${count}">0</td>
 				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="project${count}" onchange="asddsa('project', 'project${count}')">
+				<input class="w-12" type="number" max="100" min="0" id="project${count}" value="${rand()}" onchange="asddsa('project', 'project${count}')">
 				</td>
 				<td class="border border-gray-700" id="bobotproject${count}">0</td>
 				<td class="border border-gray-700" id="total${count}"></td>
 				<td class="border border-gray-700" id="grade${count}"></td>
 				</tr>`);
+			bobotregenerate(count);
+		}
+		function bobotregenerate(wkkw){
+			let idkehadiran = document.getElementById(`kehadiran${wkkw}`).value;
+			let bobotkehadiran = document.getElementById(`bobotkehadiran${wkkw}`).innerHTML = idkehadiran/5;
 
+			let iduas = document.getElementById(`uas${wkkw}`).value;
+			let bobotuas = document.getElementById(`bobotuas${wkkw}`).innerHTML = iduas/5;
+
+			let iduts = document.getElementById(`uts${wkkw}`).value;
+			let bobotuts = document.getElementById(`bobotuts${wkkw}`).innerHTML = iduts/5;
+
+			let idtugas = document.getElementById(`tugas${wkkw}`).value;
+			let bobottugas = document.getElementById(`bobottugas${wkkw}`).innerHTML = idtugas/5;
+
+			let idproject = document.getElementById(`project${wkkw}`).value;
+			let bobotproject = document.getElementById(`bobotproject${wkkw}`).innerHTML = idproject/5;
+
+			let idtotal = parseFloat(bobotkehadiran)+parseFloat(bobotuas)+parseFloat(bobotuts)+parseFloat(bobottugas)+parseFloat(bobotproject);
+
+			let totalbobot = document.getElementById(`total${wkkw}`).innerHTML = idtotal;
+			if (totalbobot>=80) {
+				grade = "A";
+			}else if(totalbobot>=70){
+				grade = "B";
+			}else if(totalbobot>=60){
+				grade = "C";
+			}else if(totalbobot>=50){
+				grade = "D";
+			}else if(totalbobot<=40){
+				grade = "E";
+			}
+			let gradebobot = document.getElementById(`grade${wkkw}`).innerHTML = grade;
+			console.log(Math.random());
 		}
 	</script>
 	
