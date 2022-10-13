@@ -7,21 +7,22 @@
 	<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+	<h1>Hasil interview</h1>
 	<table class="border border-collapse border-gray-700">
 		<thead>
 			<tr>
 				<th class="border border-gray-700">No</th>
 				<th class="border border-gray-700">Nama</th>
-				<th class="border border-gray-700">Kehadiran</th>
-				<th class="border border-gray-700">bobot Kehadiran</th>
-				<th class="border border-gray-700">UAS</th>
-				<th class="border border-gray-700">bobot uas</th>
-				<th class="border border-gray-700">UTS</th>
-				<th class="border border-gray-700">bobot uts</th>
-				<th class="border border-gray-700">TUGAS</th>
-				<th class="border border-gray-700">bobot tugas</th>
-				<th class="border border-gray-700">PROJECT</th>
-				<th class="border border-gray-700">bobot project</th>
+				<th class="border border-gray-700">kerapihan</th>
+				<th class="border border-gray-700">bobot kerapihan</th>
+				<th class="border border-gray-700">Kesopanan</th>
+				<th class="border border-gray-700">bobot Kesopanan</th>
+				<th class="border border-gray-700">skill</th>
+				<th class="border border-gray-700">bobot skill</th>
+				<th class="border border-gray-700">sosial</th>
+				<th class="border border-gray-700">bobot sosial</th>
+				<th class="border border-gray-700">santun</th>
+				<th class="border border-gray-700">bobot santun</th>
 				<th class="border border-gray-700">Total</th>
 				<th class="border border-gray-700">Grade</th>
 			</tr>
@@ -31,42 +32,6 @@
 	</table>
 	<button onclick="add()">Tambah</button>
 	<script type="text/javascript">
-		const trId = document.getElementById("trId");
-		let trSelect = trId.querySelectorAll('tr');
-		let count = 0;
-
-		function add(){
-			$('#trId').append(`<tr>
-				<td class="border border-gray-700">${++count}</td>
-				<td class="border border-gray-700">
-				<input class="w-52" type="text">
-				</td>
-				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="16" min="0" id="kehadiran${count}" onchange="asddsa('kehadiran', 'kehadiran${count}')">/16
-				</td>
-				<td class="border border-gray-700" id="bobotkehadiran${count}">0</td>
-				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="uas${count}" onchange="asddsa('uas', 'uas${count}')">
-				</td>
-				<td class="border border-gray-700" id="bobotuas${count}">0</td>
-				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="uts${count}" onchange="asddsa('uts', 'uts${count}')">
-				</td>
-				<td class="border border-gray-700" id="bobotuts${count}">0</td>
-				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="tugas${count}" onchange="asddsa('tugas', 'tugas${count}')">
-				</td>
-				<td class="border border-gray-700" id="bobottugas${count}">0</td>
-				<td class="border border-gray-700">
-				<input class="w-12" type="number" max="100" min="0" id="project${count}" onchange="asddsa('project', 'project${count}')">
-				</td>
-				<td class="border border-gray-700" id="bobotproject${count}">0</td>
-				<td class="border border-gray-700" id="total${count}"></td>
-				<td class="border border-gray-700" id="grade${count}"></td>
-				</tr>`);
-		}
-	</script>
-	<script type="text/javascript">
 		function asddsa(category, id){
 			let idTag = document.getElementById(id);
 			switch(category){
@@ -75,20 +40,20 @@
 				let bobotkehadiran = (vallkehadiran*100/16)/5;
 				let botkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML = bobotkehadiran;
 			// console.log(botkehadiran);
-				let totalgradekehadiran = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
-				let totalkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradekehadiran;
-				let gradekehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
-				if (totalgradekehadiran>=80) {
-					gradekehadiran.innerHTML = "A";
-				}else if(totalgradekehadiran>=70){
-					gradekehadiran.innerHTML = "B";
-				}else if(totalgradekehadiran>=60){
-					gradekehadiran.innerHTML = "C";
-				}else if(totalgradekehadiran>=50){
-					gradekehadiran.innerHTML = "D";
-				}else if(totalgradekehadiran<=40){
-					gradekehadiran.innerHTML = "E";
-				}
+			let totalgradekehadiran = parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(4)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(6)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(8)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(10)').innerHTML)+parseFloat(idTag.parentElement.parentElement.querySelector('td:nth-child(12)').innerHTML);
+			let totalkehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(13)').innerHTML = totalgradekehadiran;
+			let gradekehadiran = idTag.parentElement.parentElement.querySelector('td:nth-child(14)');
+			if (totalgradekehadiran>=80) {
+				gradekehadiran.innerHTML = "A";
+			}else if(totalgradekehadiran>=70){
+				gradekehadiran.innerHTML = "B";
+			}else if(totalgradekehadiran>=60){
+				gradekehadiran.innerHTML = "C";
+			}else if(totalgradekehadiran>=50){
+				gradekehadiran.innerHTML = "D";
+			}else if(totalgradekehadiran<=40){
+				gradekehadiran.innerHTML = "E";
+			}
 				// console.log(totalgrade);
 				break;
 				case "uas":
@@ -171,6 +136,45 @@
 			}
 		}
 	</script>
+	<script type="text/javascript">
+		const trId = document.getElementById("trId");
+		let trSelect = trId.querySelectorAll('tr');
+		let count = 0;
+
+		function add(){
+			let rand100 = Math.random() * (100 - 0) + 0;
+			$('#trId').append(`<tr>
+				<td class="border border-gray-700">${++count}</td>
+				<td class="border border-gray-700">
+				<input class="w-52" type="text">
+				</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="kehadiran${count}" value="${rand100}" onkeyup="asddsa('kehadiran', 'kehadiran${count}')" >
+				</td>
+				<td class="border border-gray-700" id="bobotkehadiran${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="uas${count}" onchange="asddsa('uas', 'uas${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotuas${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="uts${count}" onchange="asddsa('uts', 'uts${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotuts${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="tugas${count}" onchange="asddsa('tugas', 'tugas${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobottugas${count}">0</td>
+				<td class="border border-gray-700">
+				<input class="w-12" type="number" max="100" min="0" id="project${count}" onchange="asddsa('project', 'project${count}')">
+				</td>
+				<td class="border border-gray-700" id="bobotproject${count}">0</td>
+				<td class="border border-gray-700" id="total${count}"></td>
+				<td class="border border-gray-700" id="grade${count}"></td>
+				</tr>`);
+
+		}
+	</script>
+	
 	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </body>
 </html>
